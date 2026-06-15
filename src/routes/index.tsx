@@ -13,6 +13,8 @@ import {
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Section } from "@/components/Section";
+import heroImage from "@/assets/hero-cloud.jpg";
+import ctaImage from "@/assets/cta-pipelines.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -84,59 +86,78 @@ function HomePage() {
           className="pointer-events-none absolute inset-0 -z-10"
           style={{ background: "var(--gradient-radial-glow)" }}
         />
-        <div className="pointer-events-none absolute inset-0 -z-10 noise-grid opacity-40" />
+        <div className="pointer-events-none absolute inset-0 -z-10 noise-grid opacity-60" />
 
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mx-auto max-w-4xl text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-4 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur">
-              <Sparkles className="h-3.5 w-3.5 text-brand" />
-              Available for Q3 — booking 2 new clients
-            </span>
+          <div className="grid items-center gap-14 lg:grid-cols-2">
+            <div className="text-center lg:text-left">
+              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/80 px-4 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur shadow-sm">
+                <Sparkles className="h-3.5 w-3.5 text-brand" />
+                Available for Q3 — booking 2 new clients
+              </span>
 
-            <h1 className="mt-8 font-display text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl lg:text-8xl">
-              Ship faster.<br />
-              <span className="text-gradient">Scale safer.</span><br />
-              Pay less.
-            </h1>
+              <h1 className="mt-8 font-display text-5xl font-bold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
+                Ship faster.<br />
+                <span className="text-gradient">Scale safer.</span><br />
+                Pay less.
+              </h1>
 
-            <p className="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground md:text-xl">
-              I'm a senior DevOps &amp; cloud engineer helping startups and scale-ups
-              build platforms that don't wake them up at night — and don't bankrupt them either.
-            </p>
+              <p className="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground md:text-xl lg:mx-0">
+                I'm a senior DevOps &amp; cloud engineer helping startups and scale-ups
+                build platforms that don't wake them up at night — and don't bankrupt them either.
+              </p>
 
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                to="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-gradient-brand px-7 py-3.5 text-sm font-semibold text-primary-foreground glow-ring transition-transform hover:scale-[1.03]"
-              >
-                Start a project
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                to="/services"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-7 py-3.5 text-sm font-semibold text-foreground backdrop-blur transition-colors hover:bg-surface"
-              >
-                See services
-              </Link>
+              <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
+                <Link
+                  to="/contact"
+                  className="group inline-flex items-center gap-2 rounded-full bg-gradient-brand px-7 py-3.5 text-sm font-semibold text-primary-foreground glow-ring transition-transform hover:scale-[1.03]"
+                >
+                  Start a project
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  to="/services"
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold text-foreground shadow-sm transition-colors hover:bg-surface"
+                >
+                  See services
+                </Link>
+              </div>
+
+              <div className="mt-14 grid grid-cols-3 gap-8 border-t border-border/60 pt-10 text-left md:gap-12">
+                {[
+                  { k: "8+", v: "Years in production" },
+                  { k: "$3M+", v: "Cloud spend optimized" },
+                  { k: "40+", v: "Teams trained" },
+                ].map((s) => (
+                  <div key={s.v}>
+                    <div className="font-display text-3xl font-bold md:text-4xl text-gradient">
+                      {s.k}
+                    </div>
+                    <div className="mt-1 text-xs text-muted-foreground md:text-sm">{s.v}</div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="mt-16 grid grid-cols-3 gap-8 border-t border-border/60 pt-10 text-left md:gap-12">
-              {[
-                { k: "8+", v: "Years in production" },
-                { k: "$3M+", v: "Cloud spend optimized" },
-                { k: "40+", v: "Teams trained" },
-              ].map((s) => (
-                <div key={s.v}>
-                  <div className="font-display text-3xl font-bold md:text-4xl text-gradient">
-                    {s.k}
-                  </div>
-                  <div className="mt-1 text-xs text-muted-foreground md:text-sm">{s.v}</div>
-                </div>
-              ))}
+            <div className="relative">
+              <div
+                className="pointer-events-none absolute -inset-8 -z-10 rounded-[3rem] opacity-70 blur-3xl"
+                style={{ background: "var(--gradient-brand)" }}
+              />
+              <div className="relative overflow-hidden rounded-3xl border border-border bg-card shadow-[var(--shadow-card)]">
+                <img
+                  src={heroImage}
+                  alt="Isometric illustration of cloud infrastructure with networked glass cubes"
+                  width={1536}
+                  height={1280}
+                  className="h-auto w-full"
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
+
 
       {/* MARQUEE STACK */}
       <section className="relative overflow-hidden border-y border-border/60 bg-surface/30 py-8">
@@ -220,27 +241,42 @@ function HomePage() {
 
       {/* CTA */}
       <Section className="!py-32">
-        <div className="card-elevated relative overflow-hidden rounded-3xl px-8 py-20 text-center md:px-16">
+        <div className="card-elevated relative overflow-hidden rounded-3xl px-8 py-16 md:px-16">
           <div
-            className="pointer-events-none absolute inset-0 opacity-50"
+            className="pointer-events-none absolute inset-0 opacity-60"
             style={{ background: "var(--gradient-radial-glow)" }}
           />
-          <h2 className="relative font-display text-4xl font-bold tracking-tight md:text-6xl">
-            Let's ship<br />
-            <span className="text-gradient">something serious.</span>
-          </h2>
-          <p className="relative mx-auto mt-6 max-w-xl text-muted-foreground">
-            Tell me about your stack and what's slowing you down. I'll send back a concrete plan within 48 hours.
-          </p>
-          <Link
-            to="/contact"
-            className="relative mt-10 inline-flex items-center gap-2 rounded-full bg-gradient-brand px-8 py-4 text-sm font-semibold text-primary-foreground glow-ring transition-transform hover:scale-[1.03]"
-          >
-            Book a discovery call
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+          <div className="relative grid items-center gap-12 md:grid-cols-2">
+            <div>
+              <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
+                Let's ship<br />
+                <span className="text-gradient">something serious.</span>
+              </h2>
+              <p className="mt-6 max-w-xl text-muted-foreground">
+                Tell me about your stack and what's slowing you down. I'll send back a concrete plan within 48 hours.
+              </p>
+              <Link
+                to="/contact"
+                className="mt-10 inline-flex items-center gap-2 rounded-full bg-gradient-brand px-8 py-4 text-sm font-semibold text-primary-foreground glow-ring transition-transform hover:scale-[1.03]"
+              >
+                Book a discovery call
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <div className="relative">
+              <img
+                src={ctaImage}
+                alt="Illustration of CI/CD pipelines and automation gears"
+                width={1536}
+                height={768}
+                loading="lazy"
+                className="h-auto w-full rounded-2xl"
+              />
+            </div>
+          </div>
         </div>
       </Section>
+
 
       <SiteFooter />
     </div>
