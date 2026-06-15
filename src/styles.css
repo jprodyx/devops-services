@@ -143,8 +143,8 @@
 
 @utility noise-grid {
   background-image:
-    linear-gradient(to right, oklch(1 0 0 / 4%) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(1 0 0 / 4%) 1px, transparent 1px);
+    linear-gradient(to right, oklch(0.20 0.03 270 / 6%) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.20 0.03 270 / 6%) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
