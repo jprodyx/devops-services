@@ -241,27 +241,42 @@ function HomePage() {
 
       {/* CTA */}
       <Section className="!py-32">
-        <div className="card-elevated relative overflow-hidden rounded-3xl px-8 py-20 text-center md:px-16">
+        <div className="card-elevated relative overflow-hidden rounded-3xl px-8 py-16 md:px-16">
           <div
-            className="pointer-events-none absolute inset-0 opacity-50"
+            className="pointer-events-none absolute inset-0 opacity-60"
             style={{ background: "var(--gradient-radial-glow)" }}
           />
-          <h2 className="relative font-display text-4xl font-bold tracking-tight md:text-6xl">
-            Let's ship<br />
-            <span className="text-gradient">something serious.</span>
-          </h2>
-          <p className="relative mx-auto mt-6 max-w-xl text-muted-foreground">
-            Tell me about your stack and what's slowing you down. I'll send back a concrete plan within 48 hours.
-          </p>
-          <Link
-            to="/contact"
-            className="relative mt-10 inline-flex items-center gap-2 rounded-full bg-gradient-brand px-8 py-4 text-sm font-semibold text-primary-foreground glow-ring transition-transform hover:scale-[1.03]"
-          >
-            Book a discovery call
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+          <div className="relative grid items-center gap-12 md:grid-cols-2">
+            <div>
+              <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
+                Let's ship<br />
+                <span className="text-gradient">something serious.</span>
+              </h2>
+              <p className="mt-6 max-w-xl text-muted-foreground">
+                Tell me about your stack and what's slowing you down. I'll send back a concrete plan within 48 hours.
+              </p>
+              <Link
+                to="/contact"
+                className="mt-10 inline-flex items-center gap-2 rounded-full bg-gradient-brand px-8 py-4 text-sm font-semibold text-primary-foreground glow-ring transition-transform hover:scale-[1.03]"
+              >
+                Book a discovery call
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <div className="relative">
+              <img
+                src={ctaImage}
+                alt="Illustration of CI/CD pipelines and automation gears"
+                width={1536}
+                height={768}
+                loading="lazy"
+                className="h-auto w-full rounded-2xl"
+              />
+            </div>
+          </div>
         </div>
       </Section>
+
 
       <SiteFooter />
     </div>
