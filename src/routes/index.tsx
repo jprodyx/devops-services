@@ -13,6 +13,8 @@ import {
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Section } from "@/components/Section";
+import heroImage from "@/assets/hero-cloud.jpg";
+import ctaImage from "@/assets/cta-pipelines.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
