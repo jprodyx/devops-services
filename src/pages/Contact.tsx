@@ -1,29 +1,15 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Mail, MapPin, Clock, Send, Check } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact — Book a Discovery Call | ship.ops" },
-      {
-        name: "description",
-        content:
-          "Tell me about your project. Freelance DevOps consulting, cloud migrations, and cohort training enrollment. Reply within 48 hours.",
-      },
-      { property: "og:title", content: "Contact — ship.ops" },
-      {
-        property: "og:description",
-        content: "Send me a note and I'll come back with a concrete plan within 48 hours.",
-      },
-    ],
-  }),
-  component: ContactPage,
-});
+export default function ContactPage() {
+  usePageMeta({
+    title: "Contact — Book a Discovery Call | ship.ops",
+    description: "Tell me about your project. Freelance DevOps consulting, cloud migrations, and cohort training enrollment. Reply within 48 hours.",
+  });
 
-function ContactPage() {
   const [sent, setSent] = useState(false);
 
   return (
@@ -31,14 +17,9 @@ function ContactPage() {
       <SiteHeader />
 
       <section className="relative overflow-hidden pt-20 pb-12">
-        <div
-          className="pointer-events-none absolute inset-0 -z-10"
-          style={{ background: "var(--gradient-radial-glow)" }}
-        />
+        <div className="pointer-events-none absolute inset-0 -z-10" style={{ background: "var(--gradient-radial-glow)" }} />
         <div className="mx-auto max-w-3xl px-6 text-center">
-          <span className="rounded-full border border-border bg-surface/60 px-3 py-1 text-xs font-medium uppercase tracking-widest text-muted-foreground">
-            Contact
-          </span>
+          <span className="rounded-full border border-border bg-surface/60 px-3 py-1 text-xs font-medium uppercase tracking-widest text-muted-foreground">Contact</span>
           <h1 className="mt-6 font-display text-5xl font-bold tracking-tight md:text-6xl">
             Let's talk about <span className="text-gradient">your stack.</span>
           </h1>
@@ -61,18 +42,14 @@ function ContactPage() {
                   <c.i className="h-4 w-4 text-primary-foreground" strokeWidth={2.25} />
                 </div>
                 <div>
-                  <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                    {c.t}
-                  </div>
+                  <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">{c.t}</div>
                   <div className="mt-1 text-sm font-medium">{c.v}</div>
                 </div>
               </div>
             ))}
 
             <div className="card-elevated rounded-2xl p-6">
-              <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                What happens next
-              </div>
+              <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">What happens next</div>
               <ol className="mt-3 space-y-2 text-sm text-muted-foreground">
                 <li>1. I read your message personally.</li>
                 <li>2. I reply with a few sharper questions, or schedule a call.</li>
@@ -81,22 +58,14 @@ function ContactPage() {
             </div>
           </div>
 
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              setSent(true);
-            }}
-            className="card-elevated rounded-3xl p-8 md:p-10"
-          >
+          <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="card-elevated rounded-3xl p-8 md:p-10">
             {sent ? (
               <div className="flex flex-col items-center justify-center py-16 text-center">
                 <div className="grid h-14 w-14 place-items-center rounded-full bg-gradient-brand glow-ring">
                   <Check className="h-6 w-6 text-primary-foreground" strokeWidth={2.5} />
                 </div>
                 <h3 className="mt-5 font-display text-2xl font-semibold">Message received.</h3>
-                <p className="mt-2 max-w-sm text-sm text-muted-foreground">
-                  Thanks — I'll get back to you within 48 hours from hello@ship.ops.
-                </p>
+                <p className="mt-2 max-w-sm text-sm text-muted-foreground">Thanks — I'll get back to you within 48 hours from hello@ship.ops.</p>
               </div>
             ) : (
               <div className="grid gap-5">
@@ -107,13 +76,8 @@ function ContactPage() {
                 <Field label="Company" name="company" placeholder="Acme Inc" />
 
                 <div>
-                  <label className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                    What do you need help with?
-                  </label>
-                  <select
-                    name="topic"
-                    className="mt-2 w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-brand"
-                  >
+                  <label className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">What do you need help with?</label>
+                  <select name="topic" className="mt-2 w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-brand">
                     <option>DevOps consulting / platform build</option>
                     <option>Cloud migration</option>
                     <option>FinOps / cost optimization</option>
@@ -123,22 +87,12 @@ function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                    Tell me about your project
-                  </label>
-                  <textarea
-                    name="message"
-                    required
-                    rows={6}
-                    placeholder="Stack, team size, what's broken or what you're trying to ship..."
-                    className="mt-2 w-full resize-none rounded-xl border border-border bg-surface px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-brand"
-                  />
+                  <label className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Tell me about your project</label>
+                  <textarea name="message" required rows={6} placeholder="Stack, team size, what's broken or what you're trying to ship..."
+                    className="mt-2 w-full resize-none rounded-xl border border-border bg-surface px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-brand" />
                 </div>
 
-                <button
-                  type="submit"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-brand px-7 py-3.5 text-sm font-semibold text-primary-foreground glow-ring transition-transform hover:scale-[1.02]"
-                >
+                <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-brand px-7 py-3.5 text-sm font-semibold text-primary-foreground glow-ring transition-transform hover:scale-[1.02]">
                   Send message <Send className="h-4 w-4" />
                 </button>
               </div>
@@ -152,31 +106,12 @@ function ContactPage() {
   );
 }
 
-function Field({
-  label,
-  name,
-  type = "text",
-  placeholder,
-  required,
-}: {
-  label: string;
-  name: string;
-  type?: string;
-  placeholder?: string;
-  required?: boolean;
-}) {
+function Field({ label, name, type = "text", placeholder, required }: { label: string; name: string; type?: string; placeholder?: string; required?: boolean; }) {
   return (
     <div>
-      <label className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-        {label}
-      </label>
-      <input
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        required={required}
-        className="mt-2 w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-brand"
-      />
+      <label className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">{label}</label>
+      <input name={name} type={type} placeholder={placeholder} required={required}
+        className="mt-2 w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-brand" />
     </div>
   );
 }

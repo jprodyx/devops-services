@@ -1,9 +1,9 @@
-import { Link } from "@tanstack/react-router";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X, Terminal } from "lucide-react";
 
 const nav = [
-  { to: "/", label: "Home" },
+  { to: "/", label: "Home", end: true },
   { to: "/services", label: "Services" },
   { to: "/courses", label: "Courses" },
   { to: "/about", label: "About" },
@@ -27,15 +27,18 @@ export function SiteHeader() {
 
         <nav className="hidden items-center gap-1 md:flex">
           {nav.map((item) => (
-            <Link
+            <NavLink
               key={item.to}
               to={item.to}
-              activeOptions={{ exact: item.to === "/" }}
-              className="rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-              activeProps={{ className: "rounded-lg px-3 py-2 text-sm text-foreground font-medium" }}
+              end={item.end}
+              className={({ isActive }) =>
+                isActive
+                  ? "rounded-lg px-3 py-2 text-sm text-foreground font-medium"
+                  : "rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+              }
             >
               {item.label}
-            </Link>
+            </NavLink>
           ))}
         </nav>
 
